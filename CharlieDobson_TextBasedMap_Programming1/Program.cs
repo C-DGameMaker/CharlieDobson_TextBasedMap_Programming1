@@ -11,14 +11,19 @@ namespace CharlieDobson_TextBasedMap_Programming1
     {
         static string[,] map = 
         {   
-            {"^", "^", "-", "-", "-", "-", "-", "-", "^", "-", "-", "-"},
-            {"-", "^", "-", "-", "-", "-", "~", "-", "-", "-", "-", "-"},
-            {"-", "-", "-", "-", "-", "~", "~", "-", "-", "-", "-", "-"},
-            {"-", "-", "-", "-", "-", "~", "~", "~", "-", "-", "-", "^"},
-            {"^", "^", "-", "-", "-", "-", "~", "~", "~", "-", "-", "-"},
-            {"~", "~", "~", "-", "-", "-", "-", "-", "~", "-", "-", "-"},
-            {"~", "~", "~", "~", "-", "-", "-", "-", "-", "-", "-", "-"},
+            {"█", "█", "░", "░", "░", "░", "░", "░", "█", "░", "░", "░"},
+            {"░", "█", "░", "░", "░", "░", "▒", "░", "░", "░", "░", "░"},
+            {"░", "░", "░", "░", "░", "▒", "▒", "░", "░", "░", "░", "░"},
+            {"░", "░", "░", "░", "░", "▒", "▒", "▒", "░", "░", "░", "█"},
+            {"█", "█", "░", "░", "░", "░", "▒", "▒", "▒", "░", "░", "░"},
+            {"▒", "▒", "▒", "░", "░", "░", "░", "░", "▒", "░", "░", "░"},
+            {"▒", "▒", "▒", "▒", "░", "░", "░", "░", "░", "░", "░", "░"},
         };
+
+        // ░ = grass
+        // ▒ = water
+        // █ = mountain
+
         static void Main(string[] args)
         {
             DisplayMap();
@@ -39,7 +44,21 @@ namespace CharlieDobson_TextBasedMap_Programming1
                 Console.Write("║");
                 for (int x = 0; x < map.GetLength(1); x++)
                 {
-                    Console.Write(map[y,x]);
+                    if (map[y, x] == "▒")
+                    {
+                        Console.BackgroundColor = ConsoleColor.Blue;
+                    }
+                    else if (map[y,x] == "░")
+                    {
+                        Console.BackgroundColor = ConsoleColor.Green;
+                    }
+                    else if (map[y,x] == "█")
+                    {
+                        Console.BackgroundColor = ConsoleColor.Gray;
+                    }
+
+                        Console.Write(map[y, x]);
+                    Console.ResetColor();
                 }
                 Console.Write("║");
                 Console.Write("\n");
